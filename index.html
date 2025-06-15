@@ -1,13 +1,516 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/caloriescounter/favicon.ico">
-    <title>Calories Counter</title>
-  <script type="module" crossorigin src="/caloriescounter/assets/index-BveU4vg4.js"></script>
-  <link rel="stylesheet" crossorigin href="/caloriescounter/assets/index-IEPsTf15.css">
-</head>
-  <body>
-    <div id="root"></div>
-  </body>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>ContaCalorie</title>
+		<script type="module" crossorigin src="/assets/index-jxs8zpC4.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BwKQtVXq.css">
+	</head>
+
+	<body>
+		<div id="container">
+			<header>
+				<nav class="left-buttons-container"></nav>
+				<h1>ContaCalorie</h1>
+				<nav class="right-buttons-container">
+					<button
+						id="add-product"
+						class="nav-button"
+						title="Aggiungi prodotto personalizzato"
+						value="add-product-article"
+						type="button"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="32"
+							height="32"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="3"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<line x1="12" y1="5" x2="12" y2="19"></line>
+							<line x1="5" y1="12" x2="19" y2="12"></line>
+						</svg>
+					</button>
+					<button id="info" class="nav-button" title="Info" value="info-section" type="button">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="32"
+							height="32"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="3"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<line x1="12" y1="19" x2="12" y2="11"></line>
+							<line x1="12" y1="5" x2="12" y2="5"></line>
+						</svg>
+					</button>
+					<!-- <button id="user" class="nav-button" title="Account" value="account-settings" type="button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                        fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" fill="currentColor"></path>
+                        <circle cx="12" cy="7" r="5" fill="currentColor"></circle>
+                    </svg>
+                </button> -->
+					<button id="options" class="nav-button" title="Opzioni" value="options-menu" type="button">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="32"
+							height="32"
+							viewBox="0 0 24 24"
+							stroke-width="0"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path
+								d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+							></path>
+							<circle cx="12" cy="12" r="3" fill="currentColor"></circle>
+						</svg>
+					</button>
+					<button id="menu" class="nav-button no-display" title="Opzioni" value="all-options" type="button">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="32"
+							height="32"
+							viewBox="0 0 24 24"
+							stroke-width="1"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="4" r="1.5"></circle>
+							<circle cx="12" cy="12" r="1.5"></circle>
+							<circle cx="12" cy="20" r="1.5"></circle>
+						</svg>
+					</button>
+				</nav>
+			</header>
+			<main id="article-container">
+				<article id="main-article">
+					<section id="search-unit">
+						<form id="search-form" class="card-hdr" autocomplete="off">
+							<input
+								id="search-input"
+								class="search-box"
+								type="text"
+								placeholder="Cerca!"
+								required
+								autofocus
+							/>
+							<button id="clear-search" class="action-button no-display" title="Pulisci" type="reset">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="18" y1="6" x2="6" y2="18"></line>
+									<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
+							</button>
+						</form>
+						<ul id="search-results" class="list-box"></ul>
+					</section>
+					<section id="selection-unit" class="no-display">
+						<form id="selection-form" class="vertical-form" autocomplete="off">
+							<div class="card-hdr">
+								<h4>Dettagli alimento</h4>
+								<button id="cancel-selection" class="action-button" title="Indietro" type="reset">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M19 12H6M12 5l-7 7 7 7" />
+									</svg>
+								</button>
+							</div>
+							<!--
+                            <div class="form-group form-row">
+                                <input id="prod-id" type="text" disabled />
+                                <label for="prod-id">ID</label>
+                            </div>
+                        -->
+							<div class="form-group form-row">
+								<input id="prod-name" type="text" disabled />
+								<label for="prod-name">Nome</label>
+							</div>
+							<div class="form-group form-row">
+								<input
+									id="prod-weight"
+									type="number"
+									min="1"
+									placeholder="Inserisci quantità (grammi or millilitri)"
+									required
+								/>
+								<label for="prod-weight">Quantità (g/ml)</label>
+							</div>
+							<div id="selection-footer">
+								<div class="form-group form-row">
+									<div id="selection-values" class="modules-wrapper">
+										<div class="module calories-box">
+											<div class="module-hdr">Calorie</div>
+											<div id="selection-calories" class="module-body"></div>
+										</div>
+										<div class="module fat-box">
+											<div class="module-hdr">Grassi</div>
+											<div id="selection-fat" class="module-body"></div>
+										</div>
+										<div class="module saturates-box">
+											<div class="module-hdr">Di cui saturi</div>
+											<div id="selection-saturates" class="module-body"></div>
+										</div>
+										<div class="module carbs-box">
+											<div class="module-hdr">Carboidrati</div>
+											<div id="selection-carbs" class="module-body"></div>
+										</div>
+										<div class="module sugar-box">
+											<div class="module-hdr">Di cui zuccheri</div>
+											<div id="selection-sugar" class="module-body"></div>
+										</div>
+										<div class="module proteins-box">
+											<div class="module-hdr">Proteine</div>
+											<div id="selection-proteins" class="module-body"></div>
+										</div>
+										<div class="module salt-box">
+											<div class="module-hdr">Sale</div>
+											<div id="selection-salt" class="module-body"></div>
+										</div>
+									</div>
+									<label>Valori nutrizionali</label>
+								</div>
+								<button id="select-product" class="action-button form-row"></button>
+							</div>
+						</form>
+					</section>
+					<section id="list-unit" class="no-display">
+						<div class="card-hdr">
+							<h4>Lista alimenti</h4>
+							<button title="Svuota lista" id="clear" class="action-button">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="3 6 5 6 21 6"></polyline>
+									<path
+										d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+									></path>
+									<line x1="10" y1="11" x2="10" y2="17"></line>
+									<line x1="14" y1="11" x2="14" y2="17"></line>
+								</svg>
+							</button>
+						</div>
+						<ul id="calculation-list" class="list-box"></ul>
+					</section>
+					<section id="result-unit">
+						<div class="card-hdr">
+							<h4>Totale</h4>
+						</div>
+						<div id="total-values" class="modules-wrapper">
+							<div class="module calories-box">
+								<div class="module-hdr">Calorie</div>
+								<div id="total-calories" class="module-body">0</div>
+							</div>
+							<div class="module fat-box">
+								<div class="module-hdr">Grassi</div>
+								<div id="total-fat" class="module-body">0</div>
+							</div>
+							<div class="module saturates-box">
+								<div class="module-hdr">Di cui saturi</div>
+								<div id="total-saturates" class="module-body">0</div>
+							</div>
+							<div class="module carbs-box">
+								<div class="module-hdr">Carboidrati</div>
+								<div id="total-carbs" class="module-body">0</div>
+							</div>
+							<div class="module sugar-box">
+								<div class="module-hdr">Di cui zuccheri</div>
+								<div id="total-sugar" class="module-body">0</div>
+							</div>
+							<div class="module proteins-box">
+								<div class="module-hdr">Proteine</div>
+								<div id="total-proteins" class="module-body">0</div>
+							</div>
+							<div class="module salt-box">
+								<div class="module-hdr">Sale</div>
+								<div id="total-salt" class="module-body">0</div>
+							</div>
+						</div>
+					</section>
+				</article>
+				<article id="add-product-article" class="no-display">
+					<section>
+						<div class="card-hdr">
+							<h4>Aggiungi un alimento personalizzato</h4>
+							<button id="close-add-product" class="action-button close-alt-article" title="Chiudi">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="18" y1="6" x2="6" y2="18"></line>
+									<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
+							</button>
+						</div>
+						<form id="add-product-form" class="vertical-form" autocomplete="off">
+							<div class="form-group form-row">
+								<input id="add-product-name" type="text" required />
+								<label for="add-product-name">Nome</label>
+							</div>
+							<div class="form-group form-row">
+								<div id="add-product-values" required class="modules-wrapper">
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-calories"
+												type="number"
+												min="0"
+												max="999"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-calories" class="module-hdr">Calorie</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-fat"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-fat" class="module-hdr">Grassi</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-saturates"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-saturates" class="module-hdr">Di cui saturi</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-carbs"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-carbs" class="module-hdr">Carboidrati</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-sugar"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-sugar" class="module-hdr">Di cui zuccheri</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-proteins"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-proteins" class="module-hdr">Proteine</label>
+									</div>
+									<div class="module">
+										<div class="module-body">
+											<input
+												id="add-product-salt"
+												type="number"
+												min="0"
+												max="100"
+												step=".01"
+												required
+												size="2"
+											/>
+										</div>
+										<label for="add-product-salt" class="module-hdr">Sale</label>
+									</div>
+								</div>
+								<label>Valori nutrizionali per 100g</label>
+							</div>
+							<button id="add-product-submit" class="action-button form-row" title="Aggiungi">
+								<span>Aggiungi</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="12" y1="5" x2="12" y2="19"></line>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+								</svg>
+							</button>
+						</form>
+					</section>
+					<section id="custom-list-unit" class="no-display">
+						<div class="card-hdr">
+							<h4>Lista alimenti personalizzati</h4>
+							<button title="Svuota lista" id="clear-custom-list" class="action-button">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="3 6 5 6 21 6"></polyline>
+									<path
+										d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+									></path>
+									<line x1="10" y1="11" x2="10" y2="17"></line>
+									<line x1="14" y1="11" x2="14" y2="17"></line>
+								</svg>
+							</button>
+						</div>
+						<ul id="custom-list" class="list-box"></ul>
+					</section>
+				</article>
+				<article id="info-section" class="no-display">
+					<section>
+						<div class="card-hdr">
+							<h4>Info</h4>
+							<button id="close-options" class="action-button close-alt-article" title="Chiudi">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="18" y1="6" x2="6" y2="18"></line>
+									<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
+							</button>
+						</div>
+						<p class="card-body">
+							Sito solo a scopo dimostrativo, non è inteso come fonte affidabile di una dieta equilibrata.
+							<br />
+							<br />
+							Decliniamo ogni responsabilità per calcoli calorici errati o errori di rappresentazione nei
+							valori nutrizionali.
+							<br />
+							<br />
+							Questo sito non condivide dati con terze parti.
+						</p>
+					</section>
+				</article>
+				<article id="options-menu" class="no-display">
+					<section>
+						<div class="card-hdr">
+							<h4>Opzioni</h4>
+							<button id="close-options" class="action-button close-alt-article" title="Chiudi">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="18" y1="6" x2="6" y2="18"></line>
+									<line x1="6" y1="6" x2="18" y2="18"></line>
+								</svg>
+							</button>
+						</div>
+						<div class="list-box">
+							<div class="list-element">
+								<div class="list-element-desc">Tema scuro</div>
+								<div class="list-element-value">
+									<input type="checkbox" class="checkbox" id="theme-checkbox" />
+								</div>
+							</div>
+							<!-- <div class="list-element">
+                            <div class="list-element-desc">
+                                Use kj in place of calories (TODO)
+                            </div>
+                            <div class="list-element-value">
+                                <input type="checkbox" class="checkbox" />
+                            </div>
+                        </div> -->
+						</div>
+					</section>
+				</article>
+			</main>
+		</div>
+	</body>
 </html>
